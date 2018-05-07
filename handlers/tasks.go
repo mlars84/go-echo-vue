@@ -25,7 +25,6 @@ func PutTask(db *sql.DB) echo.HandlerFunc {
 		var task models.Task
 		c.Bind(&task)
 		id, err := models.PutTask(db, task.Name)
-
 		if err == nil {
 			return c.JSON(http.StatusCreated, H{
 				"created": id,

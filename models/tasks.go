@@ -42,14 +42,12 @@ func PutTask(db *sql.DB, name string) (int64, error) {
 	sql := "INSERT INTO tasks(name) VALUES(?)"
 
 	stmt, err := db.Prepare(sql)
-
 	if err != nil {
 		panic(err)
 	}
 	defer stmt.Close()
 
 	result, err2 := stmt.Exec(name)
-
 	if err2 != nil {
 		panic(err2)
 	}
